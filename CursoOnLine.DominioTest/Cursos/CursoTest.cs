@@ -1,3 +1,4 @@
+using CursoOnLine.Dominio.Constantes;
 using CursoOnLine.Dominio.Entidades;
 using CursoOnLine.Dominio.Enumerado;
 using ExpectedObjects;
@@ -36,11 +37,12 @@ namespace CursoOnLine.DominioTest.Cursos
                 Valor = (double)300
             };
 
-            Assert
+            var mensagem = Assert
                 .Throws<ArgumentException>(
                     () => 
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
-                );
+                ).Message;
+            Assert.Equal(ConstantesMensagens.CURSO_NOME_INVALIDO, mensagem);
         }
 
         [Theory]
@@ -59,11 +61,12 @@ namespace CursoOnLine.DominioTest.Cursos
                 Valor = (double)300
             };
 
-            Assert
+            var mensagem = Assert
                 .Throws<ArgumentException>(
                     () =>
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
-                );
+                ).Message;
+            Assert.Contains(ConstantesMensagens.CURSO_CARGA_HORARIA_INVALIDA, mensagem);
 
         }
 
@@ -88,7 +91,7 @@ namespace CursoOnLine.DominioTest.Cursos
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
                 ).Message;
 
-            Assert.Contains("maior que zero", mensagem);
+            Assert.Contains(ConstantesMensagens.CURSO_VALOR_INVALIDO, mensagem);
         }
 
 
