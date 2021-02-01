@@ -43,13 +43,18 @@ namespace CursoOnLine.DominioTest.Cursos
                 );
         }
 
-        [Fact]
-        public void CursoNaoDeveTerCargaHorariaMenorQue1()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(0.30)]
+        [InlineData(-1)]
+        [InlineData(0.90)]
+        [InlineData(null)]        
+        public void CursoNaoDeveTerCargaHorariaMenorQueUm(double cargaHoraria)
         {
             var cursoEsperado = new
             {
                 Nome = "Curso de Testes",
-                CargaHoraria = 0,
+                CargaHoraria = cargaHoraria,
                 PublicoAlvo = PublicoAlvo.Universitario,
                 Valor = (double)300
             };
