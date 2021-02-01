@@ -42,5 +42,24 @@ namespace CursoOnLine.DominioTest.Cursos
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
                 );
         }
+
+        [Fact]
+        public void CursoNaoDeveTerCargaHorariaMenorQue1()
+        {
+            var cursoEsperado = new
+            {
+                Nome = "Curso de Testes",
+                CargaHoraria = 0,
+                PublicoAlvo = PublicoAlvo.Universitario,
+                Valor = (double)300
+            };
+
+            Assert
+                .Throws<ArgumentException>(
+                    () =>
+                    new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
+                );
+
+        }
     }
 }
