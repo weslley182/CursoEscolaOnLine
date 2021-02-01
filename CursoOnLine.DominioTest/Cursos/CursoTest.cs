@@ -66,5 +66,31 @@ namespace CursoOnLine.DominioTest.Cursos
                 );
 
         }
+
+        [Theory]
+        [InlineData(0)]        
+        [InlineData(-1)]
+        [InlineData(-100)]
+        [InlineData(null)]
+        public void CursoDeveTerValorMaiorQueZero(double valor)
+        {
+            var cursoEsperado = new
+            {
+                Nome = "Curso de Testes",
+                CargaHoraria = 20,
+                PublicoAlvo = PublicoAlvo.Universitario,
+                Valor = valor
+            };
+
+            var mensagem = Assert
+                .Throws<ArgumentException>(
+                    () =>
+                    new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
+                ).Message;
+
+            Assert.Contains("maior que zero", mensagem);
+        }
+
+
     }
 }

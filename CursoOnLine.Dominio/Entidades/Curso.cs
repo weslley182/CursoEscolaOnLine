@@ -18,9 +18,15 @@ namespace CursoOnLine.Dominio.Entidades
             {
                 throw new ArgumentException("Nome do Curso não pode ser inválido.");
             }
+
             if(cargaHoraria < 1)
             {
                 throw new ArgumentException("Carga horária do curso não pode ser abaixo de 1 hora.");
+            }
+
+            if(!(valor > 0))
+            {
+                throw new ArgumentException("O valor do curso deve ser maior que zero.");
             }
 
             Nome = nome;
