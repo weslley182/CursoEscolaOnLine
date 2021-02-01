@@ -14,6 +14,11 @@ namespace CursoOnLine.Dominio.Entidades
 
         public Curso(string nome, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
         {
+            if (string.IsNullOrEmpty(nome))
+            {
+                throw new ArgumentException("Nome do Curso não pode ser inválido.");
+            }
+
             Nome = nome;
             CargaHoraria = cargaHoraria;
             PublicoAlvo = publicoAlvo;
