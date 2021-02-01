@@ -1,6 +1,7 @@
 using CursoOnLine.Dominio.Constantes;
 using CursoOnLine.Dominio.Entidades;
 using CursoOnLine.Dominio.Enumerado;
+using CursoOnLine.DominioTest._Util;
 using ExpectedObjects;
 using System;
 using Xunit;
@@ -37,12 +38,12 @@ namespace CursoOnLine.DominioTest.Cursos
                 Valor = (double)300
             };
 
-            var mensagem = Assert
+            Assert
                 .Throws<ArgumentException>(
-                    () => 
+                    () =>
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
-                ).Message;
-            Assert.Equal(ConstantesMensagens.CURSO_NOME_INVALIDO, mensagem);
+                ).ComMensagem(ConstantesMensagens.CURSO_NOME_INVALIDO);
+            
         }
 
         [Theory]
@@ -61,13 +62,11 @@ namespace CursoOnLine.DominioTest.Cursos
                 Valor = (double)300
             };
 
-            var mensagem = Assert
+            Assert
                 .Throws<ArgumentException>(
                     () =>
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
-                ).Message;
-            Assert.Contains(ConstantesMensagens.CURSO_CARGA_HORARIA_INVALIDA, mensagem);
-
+                ).ComMensagem(ConstantesMensagens.CURSO_CARGA_HORARIA_INVALIDA);
         }
 
         [Theory]
@@ -85,15 +84,11 @@ namespace CursoOnLine.DominioTest.Cursos
                 Valor = valor
             };
 
-            var mensagem = Assert
+            Assert
                 .Throws<ArgumentException>(
                     () =>
-                    new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)
-                ).Message;
-
-            Assert.Contains(ConstantesMensagens.CURSO_VALOR_INVALIDO, mensagem);
+                    new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)                
+                ).ComMensagem(ConstantesMensagens.CURSO_VALOR_INVALIDO);
         }
-
-
     }
 }

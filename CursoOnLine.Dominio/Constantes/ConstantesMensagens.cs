@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CursoOnLine.Dominio.Constantes
+﻿namespace CursoOnLine.Dominio.Constantes
 {
     public static class ConstantesMensagens
     {

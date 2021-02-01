@@ -1,8 +1,6 @@
 ﻿using CursoOnLine.Dominio.Enumerado;
 using System;
 using CursoOnLine.Dominio.Constantes;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CursoOnLine.Dominio.Entidades
 {
