@@ -1,4 +1,5 @@
 using CursoOnLine.Dominio.Entidades;
+using CursoOnLine.Dominio.Enumerado;
 using ExpectedObjects;
 using System;
 using Xunit;
@@ -14,7 +15,7 @@ namespace CursoOnLine.DominioTest.Cursos
             {
                 Nome = "Curso xUnit",
                 CargaHoraria = (double)80,
-                PublicoAlvo = "Estudantes",
+                PublicoAlvo = PublicoAlvo.Universitario,
                 Valor = (double)300
             };
 

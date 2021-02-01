@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoOnLine.Dominio.Enumerado;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,10 +9,10 @@ namespace CursoOnLine.Dominio.Entidades
     {
         public string Nome { get; set; }
         public double CargaHoraria { get; set; }
-        public string PublicoAlvo { get; set; }
+        public PublicoAlvo PublicoAlvo { get; set; }
         public double Valor { get; set; }
 
-        public Curso(string nome, double cargaHoraria, string publicoAlvo, double valor)
+        public Curso(string nome, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
         {
             Nome = nome;
             CargaHoraria = cargaHoraria;
