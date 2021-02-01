@@ -5,11 +5,25 @@ using CursoOnLine.DominioTest._Util;
 using ExpectedObjects;
 using System;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace CursoOnLine.DominioTest.Cursos
 {
-    public class CursoTest
+    public class CursoTest: IDisposable
     {
+        private readonly ITestOutputHelper _output;
+
+        public CursoTest(ITestOutputHelper output)
+        {
+            _output = output;
+            _output.WriteLine("Criando teste.");
+        }
+
+        public void Dispose()
+        {
+            _output.WriteLine("Fechando teste.");
+        }
+
         [Fact]
         public void DeveCriarCurso()
         {
@@ -89,6 +103,6 @@ namespace CursoOnLine.DominioTest.Cursos
                     () =>
                     new Curso(cursoEsperado.Nome, cursoEsperado.CargaHoraria, cursoEsperado.PublicoAlvo, cursoEsperado.Valor)                
                 ).ComMensagem(ConstantesMensagens.CURSO_VALOR_INVALIDO);
-        }
+        }        
     }
 }
