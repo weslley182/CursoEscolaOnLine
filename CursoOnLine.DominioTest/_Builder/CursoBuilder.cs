@@ -6,7 +6,7 @@ namespace CursoOnLine.DominioTest._Builder
 {
     public class CursoBuilder
     {        
-        public string _nome;
+        private string _nome;
         private string _descricao;
         private double _cargaHoraria;
         private PublicoAlvo _publicoAlvo = PublicoAlvo.Universitario;
