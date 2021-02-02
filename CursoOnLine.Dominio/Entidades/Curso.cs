@@ -7,11 +7,12 @@ namespace CursoOnLine.Dominio.Entidades
     public class Curso
     {
         public string Nome { get; set; }
+        public string Descricao { get; set; }
         public double CargaHoraria { get; set; }
         public PublicoAlvo PublicoAlvo { get; set; }
         public double Valor { get; set; }
         
-        public Curso(string nome, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
+        public Curso(string nome, string descricao, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
         {
             if (string.IsNullOrEmpty(nome))
             {
@@ -29,6 +30,7 @@ namespace CursoOnLine.Dominio.Entidades
             }
 
             Nome = nome;
+            Descricao = descricao;
             CargaHoraria = cargaHoraria;
             PublicoAlvo = publicoAlvo;
             Valor = valor;
