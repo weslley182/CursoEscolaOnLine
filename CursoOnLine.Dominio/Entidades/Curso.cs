@@ -1,4 +1,4 @@
-﻿using CursoOnLine.Dominio.Enumerado;
+﻿using CursoOnLine.Dominio.Enumerados;
 using System;
 using CursoOnLine.Dominio.Constantes;
 
@@ -6,11 +6,11 @@ namespace CursoOnLine.Dominio.Entidades
 {
     public class Curso
     {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public double CargaHoraria { get; set; }
-        public PublicoAlvo PublicoAlvo { get; set; }
-        public double Valor { get; set; }
+        public string Nome { get; init; }
+        public string Descricao { get; init; }
+        public double CargaHoraria { get; init; }
+        public PublicoAlvo PublicoAlvo { get; init; }
+        public double Valor { get; init; }
         
         public Curso(string nome, string descricao, double cargaHoraria, PublicoAlvo publicoAlvo, double valor)
         {

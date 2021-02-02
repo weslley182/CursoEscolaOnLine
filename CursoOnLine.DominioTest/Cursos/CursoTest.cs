@@ -1,7 +1,7 @@
 using Bogus;
 using CursoOnLine.Dominio.Constantes;
 using CursoOnLine.Dominio.Entidades;
-using CursoOnLine.Dominio.Enumerado;
+using CursoOnLine.Dominio.Enumerados;
 using CursoOnLine.DominioTest._Builder;
 using CursoOnLine.DominioTest._Util;
 using ExpectedObjects;
@@ -14,10 +14,10 @@ namespace CursoOnLine.DominioTest.Cursos
     public class CursoTest: IDisposable
     {
         private readonly ITestOutputHelper _output;
-        private string _nome;
-        private string _descricao;
-        private double _cargaHoraria;
-        private double _valor;
+        private readonly string _nome;
+        private readonly string _descricao;
+        private readonly double _cargaHoraria;
+        private readonly double _valor;
 
         public CursoTest(ITestOutputHelper output)
         {
@@ -35,6 +35,7 @@ namespace CursoOnLine.DominioTest.Cursos
         public void Dispose()
         {
             _output.WriteLine("Fechando teste.");
+            GC.SuppressFinalize(this);
         }
 
         [Fact]

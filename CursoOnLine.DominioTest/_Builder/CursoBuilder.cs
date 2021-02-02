@@ -1,16 +1,26 @@
-﻿using CursoOnLine.Dominio.Entidades;
-using CursoOnLine.Dominio.Enumerado;
+﻿using Bogus;
+using CursoOnLine.Dominio.Entidades;
+using CursoOnLine.Dominio.Enumerados;
 
 namespace CursoOnLine.DominioTest._Builder
 {
     public class CursoBuilder
-    {
-        private string _nome = "Curso de Xunit";
-        private string _descricao = "Curso para verificaçãõ de Xunit e Moq";
-        private double _cargaHoraria = 50;
+    {        
+        public string _nome;
+        private string _descricao;
+        private double _cargaHoraria;
         private PublicoAlvo _publicoAlvo = PublicoAlvo.Universitario;
-        private double _valor = 890;
-        
+        private double _valor;
+
+        public CursoBuilder()
+        {
+            var faker = new Faker();
+
+            _nome = faker.Company.CompanyName();            
+            _descricao = faker.Lorem.Paragraph();
+            _cargaHoraria = faker.Random.Double(50, 100);
+            _valor = faker.Random.Double(200, 1000);
+        }
         public static CursoBuilder Novo()
         {
             return new CursoBuilder();
