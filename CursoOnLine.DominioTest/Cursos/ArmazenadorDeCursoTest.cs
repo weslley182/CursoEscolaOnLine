@@ -1,7 +1,8 @@
 ﻿using Bogus;
 using CursoOnLine.Dominio.Constantes;
+using CursoOnLine.Dominio.Dados;
 using CursoOnLine.Dominio.Entidades;
-using CursoOnLine.Dominio.Enumerados;
+using CursoOnLine.Dominio.Servicos;
 using CursoOnLine.DominioTest._Builder;
 using CursoOnLine.DominioTest._Util;
 using Moq;
@@ -70,55 +71,5 @@ namespace CursoOnLine.DominioTest.Cursos
                 _armazenadorDeCurso.Armazenar(_cursoDto))
                 .ComMensagem(ConstantesMensagens.ARMAZENADORDECURSO_NOME_CONSTA_BANCO);
         }
-    }
-
-    public interface ICursoRepositorio
-    {
-        void Adicionar(Curso curso);
-        void Atualizar(Curso curso);
-        Curso ObterPeloNome(string nome);
-    }
-
-    public class ArmazenadorDeCurso
-    {
-        private readonly ICursoRepositorio _cursoRepositorio;
-
-        public ArmazenadorDeCurso(ICursoRepositorio cursoRepositorio)
-        {
-            _cursoRepositorio = cursoRepositorio;
-        }
-
-        public void Armazenar(CursoDto cursoDto)
-        {
-            var cursoJaSalvo = _cursoRepositorio.ObterPeloNome(cursoDto.Nome);
-            
-            if(cursoJaSalvo != null)
-            {
-                throw new ArgumentException(ConstantesMensagens.ARMAZENADORDECURSO_NOME_CONSTA_BANCO);
-            }
-
-            Enum.TryParse(typeof(PublicoAlvo), cursoDto.PublicoAlvo, out var publicoAlvo);
-            
-            if(publicoAlvo == null)
-            {
-                throw new ArgumentException(ConstantesMensagens.ARMAZENADORDECURSO_PUBLICO_INVALIDO);
-            }
-
-            var curso =
-                new Curso(cursoDto.Nome, cursoDto.Descricao, 
-                    cursoDto.CargaHoraria, (PublicoAlvo)publicoAlvo, cursoDto.Valor);
-            
-            _cursoRepositorio.Adicionar(curso);
-        }
-    }
-
-    public class CursoDto
-    {
-        public string Nome { get; set; }
-        public string Descricao { get; set; }
-        public double CargaHoraria { get; set; }
-        public int PublicoAlvoId { get; set; }
-        public string PublicoAlvo { get; set; }
-        public double Valor { get; set; }
-    }
+    }    
 }
